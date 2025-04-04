@@ -3,7 +3,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const body = document.body;
     const messageForm = document.getElementById("messageForm");
     if (!messageForm) {
-        console.error("Error: Element with ID 'messageForm' not found in the DOM.");
+        console.error(
+            "Error: Element with ID 'messageForm' not found in the DOM."
+        );
         return;
     }
     const messageDisplay = document.getElementById("messageDisplay");
@@ -36,6 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
     updateButtonIcon();
 
     toggleButton.addEventListener("click", () => {
+        console.log("clicked dark mode");
         body.classList.toggle("dark-mode");
 
         // Save preference to localStorage
@@ -96,19 +99,19 @@ const messageInput = document.getElementById("messageBoard");
 const charCounter = document.getElementById("char-counter");
 
 messageInput.addEventListener("input", () => {
-  let currentLength = messageInput.value.length;
+    let currentLength = messageInput.value.length;
 
-  if (currentLength > 50) {
-    messageInput.value = messageInput.value.slice(0, 50);
-    currentLength = 50;
-  }
+    if (currentLength > 50) {
+        messageInput.value = messageInput.value.slice(0, 50);
+        currentLength = 50;
+    }
 
-  charCounter.textContent = `${currentLength}/50 characters`;
+    charCounter.textContent = `${currentLength}/50 characters`;
 
-  // Change the counter color to red if the limit is reached
-  if (currentLength === 50) {
-    charCounter.style.color = "red";
-  } else {
-    charCounter.style.color = ""; // Reset to default color
-  }
+    // Change the counter color to red if the limit is reached
+    if (currentLength === 50) {
+        charCounter.style.color = "red";
+    } else {
+        charCounter.style.color = ""; // Reset to default color
+    }
 });
